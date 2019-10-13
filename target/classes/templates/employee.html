@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Add Job Title</title>
+<link rel="stylesheet" href="../main/resources/templates/style.css">
+</head>
+<body>
+	<div class="main__content">
+	<h1 class="main__title">Add Employee</h1>
+	<div class="tab-view-content">
+	<form action="#" th:action="@{/employee}" th:object="${employee}"
+		method="post">
+		<p>
+			Name: <input type="text" th:field="*{name}" />
+		</p>
+		<p>
+			Surname: <input type="text" th:field="*{surname}" />
+		</p>
+		<p>
+			Age: <input type="text" th:field="*{age}" />
+		</p>
+		<p>
+			Income: <input type="text" th:field="*{income}" />
+		</p>
+		<p>
+			ID: <select th:field="*{jobtitleid}"
+			>
+			
+				<option th:each="jobtitle : ${jobtitles}" th:value="${jobtitle.id}"
+					th:text="${jobtitle.title}"></option>
+			</select>
+		</p>
+
+
+		<p>
+			<input type="submit" value="Submit" /> <input type="reset"
+				value="Reset" />
+		</p>
+	</form>
+	</div>
+	<h1 class="main__title">Show Employees</h1>
+	<table class="schema-table">
+		<tr>
+			<th>Name</th>
+			<th>Surname</th>
+			<th>Age</th>
+			<th>Income</th>
+			<th>Job title</th>
+			<th>Description</th>
+			<th>Executive</th>
+		</tr>
+		<tr th:each="empl : ${employees}">
+			<td class="blue" width="150px" th:text="${empl.name}"></td>
+			<td class="blue" width="150px" th:text="${empl.surname}"></td>
+			<td class="blue" width="150px" th:text="${empl.age}"></td>
+			<td class="blue" width="150px" th:text="${empl.income}"></td>
+			<td class="blue" width="150px" th:text="${empl.jobtitle.title}"></td>
+			<td class="blue" width="150px" th:text="${empl.jobtitle.description}"></td>
+			<td class="blue" width="150px" th:text="${empl.jobtitle.executive}"></td>
+		</tr>
+	</table>
+	</div>
+</body>
+</html>

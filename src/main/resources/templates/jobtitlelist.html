@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Show Job Titles</title>
+</head>
+<body>
+	<h1>Show Job Titles</h1>
+	<table border="1">
+    <tr>
+        <th>title</th>
+        <th>description</th>
+        <th>executive</th>
+    </tr>
+    <tr th:each="jobtitle : ${jobtitles}">
+        <td th:text="${jobtitle.title}"></td>
+        <td th:text="${jobtitle.description}"></td>
+        <td th:text="${jobtitle.executive}"></td>
+    </tr>
+</table>
+
+</body>
+</html>
